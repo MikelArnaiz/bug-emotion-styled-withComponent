@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styled from "@emotion/styled";
 
-function App() {
+const Box = styled.div`
+  border: 1px solid red;
+`;
+
+const FormBox = Box.withComponent("form");
+
+const Form = styled(FormBox)`
+  background-color: "white";
+`;
+
+const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+  ev.preventDefault();
+  console.log("onSubmit");
+};
+
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Form onSubmit={onSubmit}>
+      <input type="submit" value="Submit" />
+    </Form>
   );
-}
-
-export default App;
+};
